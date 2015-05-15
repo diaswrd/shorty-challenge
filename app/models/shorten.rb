@@ -27,6 +27,18 @@ class Shorten < ActiveRecord::Base
     def set_defaults
         self.last_seen_date ||= Time.now
         self.redirect_count ||= 0
+        self.shortcode ||= generate_shortcode
     end
 
+end
+
+def generate_shortcode
+    generated_shortcode = ''
+    alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+
+    for i in 0..5
+        generated_shortcode += alphabet[rand(alphabet.length - 1)]
+    end
+
+    return generated_shortcode
 end
