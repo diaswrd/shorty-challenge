@@ -4,6 +4,8 @@ class Shorten < ActiveRecord::Base
 
     after_initialize :set_defaults, unless: :persisted?
 
+    before_save :check_shortcode
+
     validates :url, presence: true, url: true
 
     validates :shortcode,
@@ -27,7 +29,17 @@ class Shorten < ActiveRecord::Base
     def set_defaults
         self.last_seen_date ||= Time.now
         self.redirect_count ||= 0
+    end
+
+    def check_shortcode
         self.shortcode ||= generate_shortcode
+
+        shortens = Shorten.where("shortcode = ?", self.shortcode)
+
+        if shortens.length > 0
+            self.shortcode = nil
+            check_shortcode
+        end
     end
 
 end
