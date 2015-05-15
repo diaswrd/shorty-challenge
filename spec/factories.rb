@@ -1,11 +1,11 @@
 FactoryGirl.define do
 
     factory :shorten do
-        url 'http://google.com'
+        url 'google.com'
     end
 
     factory :invalid_url_shorten, parent: :shorten do
-        url 'foo'
+        url ''
     end
 
 end
