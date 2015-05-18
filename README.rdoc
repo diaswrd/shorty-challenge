@@ -10,7 +10,7 @@ The specification of this project can be found [on this gist](https://gist.githu
 
 There is 2 ways to use this service, one is communicating with POST/GET messages to your local server. Like this way:
 ````
-    $ curl -X POST -H "Content-Type: application/json" -d '{"shorten": { "url": "http://example.com", "shortcode": "example" }}' localhost:3000/shortens
+$ curl -X POST -H "Content-Type: application/json" -d '{"shorten": { "url": "http://example.com", "shortcode": "example" }}' localhost:3000/shortens
 ````
 
 And another is through a very modest web interface:
