@@ -14,7 +14,7 @@ $ curl -X POST -H "Content-Type: application/json" -d '{"shorten": { "url": "htt
 ````
 
 And another is through a very modest web interface:
-    [http://peaceful-garden-8759.herokuapp.com//shortens](peaceful-garden-8759.herokuapp.com//shortens)
+    [http://peaceful-garden-8759.herokuapp.com/shortens](peaceful-garden-8759.herokuapp.com/shortens)
 
 ## Deploy
 
