@@ -22,6 +22,7 @@ RSpec.describe ShortensController, type: :controller do
 
     it 'should return 409 if a shortcode is already taken' do
         post :create, { format: 'json', shorten: { url: 'http://example.com', shortcode: 'example' } }
+        post :create, { format: 'json', shorten: { url: 'http://example.com', shortcode: 'example' } }
 
         expect(response.status).to be(409)
     end
