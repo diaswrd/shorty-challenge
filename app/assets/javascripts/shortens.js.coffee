@@ -7,13 +7,25 @@ onFormSubmit = (ev) ->
 
     sendRequest($(this).attr('action'), $(this).serialize())
 
+showSuccessMessage = (response) ->
+    $('.feedback > div').empty()
+
+    url = window.location.href + response.shortcode
+    $('.feedback .success').html("Success! Your shortened URL is <a href='#{url}'>#{url}</a>")
+
+showErrorMessage = (response) ->
+    $('.feedback > div').empty()
+
+    error = response.responseJSON.message
+    $('.feedback .error').text("#{error}")
+
 sendRequest = (action, data) ->
     $.post(
         action, data
-    ).done((res) ->
-        console.log(res)
-    ).fail((res) ->
-        console.log(res)
+    ).done(
+        showSuccessMessage
+    ).fail(
+        showErrorMessage
     );
 
 $(->
