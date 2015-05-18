@@ -32,7 +32,9 @@ class Shorten < ActiveRecord::Base
     end
 
     def check_shortcode
-        self.shortcode ||= generate_shortcode
+        unless self.shortcode and self.shortcode.length > 0
+            self.shortcode = generate_shortcode
+        end
 
         shortens = Shorten.where("shortcode = ?", self.shortcode)
 
