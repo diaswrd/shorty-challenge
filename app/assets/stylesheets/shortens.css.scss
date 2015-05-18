@@ -62,6 +62,41 @@ body {
         border-color: #4cae4c;
         color: #FFF;
     }
+
+    .feedback {
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        z-index: 3;
+
+        div {
+            display: block;
+            width: 100%;
+            padding: 12px 8px;
+            line-height: 24px;
+            text-align: center;
+            color: #FFF;
+            font-size: 15px;
+            border: 1px solid #EEE;
+            box-sizing: border-box;
+        }
+        div:empty {
+            display: none;
+        }
+
+        a {
+            color: #EEE;
+        }
+
+        .error {
+            background: rgb(215, 56, 56);
+            border-color: #D48585;
+        }
+        .success {
+            background: rgb(35, 162, 35);
+            border-color: #5B9A5B;
+        }
+    }
 }
 
 @media (max-width: 640px) {
