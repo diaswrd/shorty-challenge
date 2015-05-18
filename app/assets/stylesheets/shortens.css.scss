@@ -1,3 +1,115 @@
 // Place all the styles related to the shortens controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Helvetica Neue', Arial, sans-serif
+}
+
+.clearfix {
+    display: block;
+    clear: both;
+}
+
+.background {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+    background-image: image-url('background.jpg');
+    background-position: center;
+    -webkit-background-size: cover;
+    background-size: cover;
+    opacity: 0.7;
+}
+
+.shorten-box {
+    width: 50%;
+    max-width: 480px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
+    h1 {
+        color: #FAFAFA;
+        text-shadow: 1px 1px 3px #000;
+        text-align: center;
+        font-size: 42px;
+        line-height: 60px;
+    }
+
+    input {
+        float: left;
+        font-size: 18px;
+        margin-bottom: 20px;
+        padding: 12px 14px;
+        box-sizing: border-box;
+    }
+    .url {
+        width: 100%;
+    }
+
+    .submit {
+        float: right;
+        padding: 10px 15px;
+        font-size: 21px;
+        background-color: #5cb85c;
+        border-color: #4cae4c;
+        color: #FFF;
+    }
+
+    .feedback {
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        z-index: 3;
+
+        div {
+            display: block;
+            width: 100%;
+            padding: 12px 8px;
+            line-height: 24px;
+            text-align: center;
+            color: #FFF;
+            font-size: 15px;
+            border: 1px solid #EEE;
+            box-sizing: border-box;
+        }
+        div:empty {
+            display: none;
+        }
+
+        a {
+            color: #EEE;
+        }
+
+        .error {
+            background: rgb(215, 56, 56);
+            border-color: #D48585;
+        }
+        .success {
+            background: rgb(35, 162, 35);
+            border-color: #5B9A5B;
+        }
+    }
+}
+
+@media (max-width: 640px) {
+    .shorten-box {
+        width: 80%;
+
+        h1 {
+            font-size: 36px;
+        }
+
+        input,
+        .submit {
+            width: 100%;
+        }
+    }
+}

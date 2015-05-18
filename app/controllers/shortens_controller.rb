@@ -23,7 +23,7 @@ class ShortensController < ApplicationController
             return
         end
 
-        if params[:shorten][:shortcode]
+        if params[:shorten][:shortcode] and params[:shorten][:shortcode].length > 0
             shortcode = params[:shorten][:shortcode]
 
             shortens = Shorten.where("shortcode = ?", shortcode)
