@@ -8,13 +8,13 @@ The specification of this project can be found [on this gist](https://gist.githu
 
 ## How to use
 
-There is 2 ways to use this service, one is communicating with POST/GET messages to the server. Like this way:
+There is 2 ways to use this service, one is communicating with POST/GET messages to your local server. Like this way:
 ````
     $ curl -X POST -H "Content-Type: application/json" -d '{"shorten": { "url": "http://example.com", "shortcode": "example" }}' localhost:3000/shortens
 ````
 
 And another is through a very modest web interface:
-    [http://localhost:3000/shortens](localhost:3000/shortens)
+    [http://peaceful-garden-8759.herokuapp.com//shortens](peaceful-garden-8759.herokuapp.com//shortens)
 
 ## Deploy
 
@@ -40,6 +40,7 @@ If you want to deploy this project in your machine to run locally, follow the st
 
 ### Profit
 Access [http://localhost:3000/](http://localhost:3000/) in your favorite modern browser and you will probably see the service up and running.
+This micro service was developed and tested on Mac OSX 10.9.5.
 
 ### Running tests
     $ bundle exec rspec
@@ -48,3 +49,5 @@ Access [http://localhost:3000/](http://localhost:3000/) in your favorite modern 
     Finished in 0.13542 seconds (files took 1.58 seconds to load)
     10 examples, 0 failures
 
+### Thanks
+Thanks to Filipe Dobreira and Vasco Fernandes for making this challenge very fun and interesting to develop.
