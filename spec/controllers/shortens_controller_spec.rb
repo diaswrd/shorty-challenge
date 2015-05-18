@@ -39,11 +39,16 @@ RSpec.describe ShortensController, type: :controller do
         expect(response.status).to be(422)
     end
 
+end
+
+# Request spec necessary for http requests outside the "/shortens" namespace.
+# More information and background here:
+# https://relishapp.com/rspec/rspec-rails/docs/request-specs/request-spec
+RSpec.describe "Shortcode Redirect", type: :request do
     it 'should redirect to its respective url' do
-        post :create, { format: 'json', shorten: { url: 'http://example.com', shortcode: 'example' } }
+        post '/shortens' , { format: 'json', shorten: { url: 'http://example.com', shortcode: 'example' } }
         get '/example'
 
         expect(response).to redirect_to('http://example.com')
     end
-
 end
