@@ -45,10 +45,18 @@ end
 # More information and background here:
 # https://relishapp.com/rspec/rspec-rails/docs/request-specs/request-spec
 RSpec.describe "Shortcode Redirect", type: :request do
+
     it 'should redirect to its respective url' do
         post '/shortens' , { format: 'json', shorten: { url: 'http://example.com', shortcode: 'example' } }
         get '/example'
 
         expect(response).to redirect_to('http://example.com')
     end
+
+    it 'should return 404 if the shortcode was not found' do
+        get '/example404'
+
+        expect(response.status).to be(404)
+    end
+
 end
