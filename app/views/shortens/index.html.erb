@@ -1,0 +1,20 @@
+<div class="background"></div>
+
+<div class="shorten-box">
+    <h1>Shorty Challenge</h1>
+
+    <div class="inputs">
+        <form action="/shortens" method="POST">
+            <input type="url" name="shorten[url]" class="url" placeholder="A URL to shorten" required />
+            <input type="text" name="shorten[shortcode]" class="shortcode" placeholder="A custom shortcode" />
+            <button type="submit" class="submit">Short it!</button>
+        </form>
+    </div>
+
+    <div class="feedback">
+        <div class="error"></div>
+        <div class="success"></div>
+    </div>
+
+    <div class="clearfix"></div>
+</div>
