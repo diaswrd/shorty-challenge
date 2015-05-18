@@ -43,7 +43,7 @@ RSpec.describe ShortensController, type: :controller do
         post :create, { format: 'json', shorten: { url: 'http://example.com', shortcode: 'example' } }
         get '/example'
 
-        expect(response.status).to be(302)
+        expect(response).to redirect_to('http://example.com')
     end
 
 end
