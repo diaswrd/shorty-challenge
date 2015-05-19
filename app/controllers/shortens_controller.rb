@@ -5,14 +5,9 @@ class ShortensController < ApplicationController
     end
 
     def redirect
-        shorten = Shorten.where(shortcode: params[:shortcode])
+        shorten = Shorten.find_by!(shortcode: params[:shortcode])
 
-        unless shorten.length > 0
-            render json: { message: 'Page not found.' }, status: 404
-            return
-        end
-
-        redirect_to shorten.first.url, status: 302
+        redirect_to shorten.url, status: 302
     end
 
     def create

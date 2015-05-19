@@ -54,9 +54,7 @@ RSpec.describe "Shortcode Redirect", type: :request do
     end
 
     it 'should return 404 if the shortcode was not found' do
-        get '/example404'
-
-        expect(response.status).to be(404)
+        expect(get '/example404').to raise_error
     end
 
 end
