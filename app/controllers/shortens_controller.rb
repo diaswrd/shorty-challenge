@@ -5,7 +5,12 @@ class ShortensController < ApplicationController
     end
 
     def redirect
-        shorten = Shorten.find_by!(shortcode: params[:shortcode])
+        begin
+            shorten = Shorten.find_by!(shortcode: params[:shortcode])
+        rescue ActiveRecord::RecordNotFound
+            head :not_found
+            return
+        end
 
         redirect_to shorten.url, status: 302
     end
