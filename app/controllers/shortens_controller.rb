@@ -63,8 +63,8 @@ class ShortensController < ApplicationController
         end
 
         render json: {
-            startDate: shorten.created_at,
-            lastSeenDate:  shorten.updated_at,
+            startDate: shorten.created_at.iso8601,
+            lastSeenDate:  shorten.updated_at.iso8601,
             redirectCount: shorten.redirect_count
         }, status: 200
     end
