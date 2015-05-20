@@ -47,10 +47,26 @@ class ShortensController < ApplicationController
             return
         end
 
+        shorten.last_seen_date = Time.now
+        shorten.redirect_count += 1
+        shorten.save
+
         redirect_to shorten.url, status: 302
     end
 
     def stats
+        begin
+            shorten = Shorten.find_by!(shortcode: params[:shortcode])
+        rescue ActiveRecord::RecordNotFound
+            head :not_found
+            return
+        end
+
+        render json: {
+            startDate: shorten.created_at,
+            lastSeenDate:  shorten.updated_at,
+            redirectCount: shorten.redirect_count
+        }, status: 200
     end
 
     private

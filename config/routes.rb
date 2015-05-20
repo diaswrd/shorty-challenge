@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   get 'shortens' => 'shortens#index'
   get ':shortcode' => 'shortens#redirect'
+  get ':shortcode/stats' => 'shortens#stats'
 
   post 'shortens' => 'shortens#create'
 
