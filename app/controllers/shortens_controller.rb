@@ -1,18 +1,6 @@
 class ShortensController < ApplicationController
 
     def index
-        @shortens = Shorten.all
-    end
-
-    def redirect
-        begin
-            shorten = Shorten.find_by!(shortcode: params[:shortcode])
-        rescue ActiveRecord::RecordNotFound
-            head :not_found
-            return
-        end
-
-        redirect_to shorten.url, status: 302
     end
 
     def create
@@ -47,8 +35,22 @@ class ShortensController < ApplicationController
         if shorten.save
             render json: { shortcode: shorten.shortcode }, status: 200
         else
-            render json: { message: 'Something went wrong. Couldn\'t short your URL' }, status: 500
+            render json: { message: 'Something went wrong. Couldn\'t short your URL' }, status: 400
         end
+    end
+
+    def redirect
+        begin
+            shorten = Shorten.find_by!(shortcode: params[:shortcode])
+        rescue ActiveRecord::RecordNotFound
+            head :not_found
+            return
+        end
+
+        redirect_to shorten.url, status: 302
+    end
+
+    def stats
     end
 
     private
