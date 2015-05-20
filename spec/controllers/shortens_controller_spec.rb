@@ -59,4 +59,16 @@ RSpec.describe "Shortcode Redirect", type: :request do
         expect(response.status).to be(404)
     end
 
+    it 'should return the shorten stats' do
+        post '/shortens' , { format: 'json', shorten: { url: 'http://example.com', shortcode: 'example' } }
+        get '/example'
+        get '/example/stats'
+
+        expect(response.status).to be(200)
+
+        data = JSON.parse response.body
+
+        expect(data.redirectCount).to eql(1)
+    end
+
 end
